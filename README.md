@@ -1,4 +1,6 @@
-# Seraph.js
+# Seraph.ts (WORK IN PROGRESS)
+
+This branch is a adaptation to typescript.
 
 A terse & familiar binding to the [Neo4j](http://neo4j.org/) REST API that is 
 idiomatic to [node.js](http://nodejs.org/).
@@ -6,23 +8,25 @@ idiomatic to [node.js](http://nodejs.org/).
 ## Install
 
 ```
-npm install seraph
+tsd install seraph-ts
 ```
 
 ## Quick Example
 
-```javascript
-var db = require("seraph")("http://localhost:7474");
+```typescript
+import db = require("seraph");
 
-db.save({ name: "Test-Man", age: 40 }, function(err, node) {
+var seraph = new db.Seraph("http://localhost:7474");
+
+seraph.save({ name: "Test-Man", age: 40 }, (err, node) => 
   if (err) throw err;
   console.log("Test-Man inserted.");
 
-  db.delete(node, function(err) {
+  seraph.delete(node, (err) =>
     if (err) throw err;
     console.log("Test-Man away!");
-  });
-});
+  );
+);
 ```
 
 ## Documentation
